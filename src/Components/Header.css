@@ -1,0 +1,10 @@
+.header {
+  width: 100%;
+  background-color: var(--lightBlack);
+}
+.header__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6em 0.6em;
+}

@@ -5,6 +5,13 @@
   --darkGray: #535353;
   --lightGray: #b3b3b3;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-snap-type: mandatory;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -12,10 +19,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--lightBlack);
+  background-color: var(--darkBlack);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+button {
+  outline: none;
+  border: none;
+  color: whitesmoke;
+  background-color: transparent;
 }
