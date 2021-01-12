@@ -7,9 +7,16 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="header__container">
-        <button className="button">
-          <ArrowBackRounded />
-        </button>
+        <div className="header__left">
+          <button className="button">
+            <ArrowBackRounded />
+          </button>
+          <img
+            src="./assets/images/Spotify_Logo_RGB_Green.png"
+            className="header__logo"
+          />
+        </div>
+
         <button className="button">
           <PersonRounded />
         </button>

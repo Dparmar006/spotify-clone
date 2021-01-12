@@ -1,3 +1,11 @@
+.row__link {
+  display: contents;
+  text-decoration: none;
+}
+.row__link:active {
+  display: none;
+}
+
 .rowcard {
   background-color: var(--lightBlack);
   height: 16em;
@@ -11,4 +19,40 @@
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.rowcard__image {
+  height: 8em;
+  width: 8em;
+  align-self: center;
+  margin-bottom: 1em;
+}
+
+.rowcard__title {
+  font-size: 1.1rem;
+  color: #ddd;
+  font-weight: 500;
+}
+
+.rowcard__description {
+  color: var(--lightGray);
+}
+
+@media screen and (min-width: 425px) {
+  .rowcard {
+    max-width: 22em;
+    min-width: 50%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .rowcard {
+    max-width: 22em;
+    min-width: 25%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .rowcard {
+    max-width: 22em;
+    min-width: 18%;
+  }
 }
