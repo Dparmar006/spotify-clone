@@ -7,6 +7,14 @@
   flex-direction: column;
   justify-content: flex-end;
 }
+
+.infoscreen__top::after {
+  content: "";
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  background-color: red;
+}
 .infoscreen__title,
 .infoscreen__description {
   margin: 0em 30px 30px 30px;
@@ -53,13 +61,38 @@ th {
   padding: 3px 8px;
   text-align: start;
 }
+
 @media screen and (min-width: 768px) {
   .infoscreen__top {
     height: 50vh;
+  }
+  .infoscreen__title {
+    font-size: 2.6rem;
+  }
+  .infoscreen__description {
+    font-size: 1.2rem;
+  }
+  .songlist__table {
+    text-align: center;
+  }
+  .songlist__table tr {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    text-align: center;
+  }
+  .infoscreen__songlist {
+    font-size: 1.1rem;
   }
 }
 @media screen and (min-width: 1024px) {
   .infoscreen__top {
     height: 60vh;
+  }
+  .songlist__table tr {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    text-align: center;
   }
 }

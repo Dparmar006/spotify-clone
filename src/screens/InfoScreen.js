@@ -2,7 +2,7 @@ import { PlayArrowRounded } from "@material-ui/icons";
 import React from "react";
 import "./InfoScreen.css";
 import Header from "../Components/Header";
-
+import theme from "../theme";
 const InfoScreen = () => {
   return (
     <section className="infoscreenpage">
@@ -19,7 +19,10 @@ const InfoScreen = () => {
         </div>
 
         <div className="infoscreen__playbutton">
-          <button className="playbutton icon-button">
+          <button
+            className="playbutton icon-button"
+            style={{ backgroundColor: `${theme.spotifyGreen}` }}
+          >
             <PlayArrowRounded />
           </button>
         </div>

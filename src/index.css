@@ -4,6 +4,7 @@
   --lightBlack: #212121;
   --darkGray: #535353;
   --lightGray: #b3b3b3;
+  --pinkAccent: rgb(221, 42, 206);
 }
 * {
   margin: 0;
@@ -31,7 +32,7 @@ body::-webkit-scrollbar-thumb {
   /* border-radius: 6px; */
 }
 body::-webkit-scrollbar-track {
-  background-color: #111;
+  background-color: transparent;
 }
 img {
   width: 100%;
