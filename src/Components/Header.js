@@ -3,7 +3,7 @@ import "./Header.css";
 
 import ArrowBackRounded from "@material-ui/icons/ArrowBackIosRounded";
 import PersonRounded from "@material-ui/icons/PersonRounded";
-export const Header = () => {
+const Header = () => {
   return (
     <header className="header">
       <div className="header__container">
@@ -24,3 +24,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

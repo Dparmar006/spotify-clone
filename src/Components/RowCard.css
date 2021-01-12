@@ -3,7 +3,6 @@
   text-decoration: none;
 }
 .row__link:active {
-  display: none;
 }
 
 .rowcard {
@@ -48,11 +47,13 @@
   .rowcard {
     max-width: 22em;
     min-width: 25%;
+    height: 18em;
   }
 }
 @media screen and (min-width: 1024px) {
   .rowcard {
     max-width: 22em;
-    min-width: 18%;
+    min-width: 20%;
+    height: 18em;
   }
 }
