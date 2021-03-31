@@ -49,3 +49,7 @@ button {
   color: whitesmoke;
   background-color: transparent;
 }
+
+a {
+  text-decoration: none;
+}

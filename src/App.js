@@ -5,8 +5,9 @@ import Row from "./Components/Row";
 import Login from "./screens/Login";
 import { getAccessTokenFromUrl } from "./spotify";
 import SpotifyWebApi from "spotify-web-api-js";
+import Sidebar from "./Components/Sidebar";
 
-const spotify = SpotifyWebApi();
+const spotifyApi = new SpotifyWebApi();
 
 function App() {
   const [token, setToken] = useState(null);
@@ -18,9 +19,9 @@ function App() {
 
     if (_token) {
       setToken(_token);
-      spotify.setAccessToken(_token);
+      spotifyApi.setAccessToken(_token);
 
-      spotify
+      spotifyApi
         .getMe()
         .then((user) => console.log(user))
         .catch((error) => console.log(error));
@@ -32,6 +33,7 @@ function App() {
       {token ? (
         <>
           <Header />
+          <Sidebar />
           <Row />
           <Row />
           <Row />

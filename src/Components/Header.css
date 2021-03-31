@@ -15,3 +15,15 @@
   justify-content: space-between;
   padding: 0.6em 0.6em;
 }
+.header__left {
+  z-index: 200;
+}
+.menu-btn {
+}
+
+#menu:checked ~ .sidebar {
+  left: -200px;
+}
+.sidebar-closed {
+  left: -300px;
+}

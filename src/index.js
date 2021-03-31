@@ -1,13 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { DataLayer } from "./DataLayer";
 import "./index.css";
+import reducer, { initialState } from "./reducer";
 
 import reportWebVitals from "./reportWebVitals";
 import Router from "./Router";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router />
+    <DataLayer initialState={initialState} reducer={reducer}>
+      <Router />
+    </DataLayer>
   </React.StrictMode>,
   document.getElementById("root")
 );
