@@ -1,0 +1,55 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  position: -webkit-sticky;
+
+  bottom: 0px;
+  background-color: var(--darkBlack);
+  padding: 0.6em;
+}
+.footer button svg {
+  font-size: 0.99rem;
+}
+
+.footer__left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 200px;
+  gap: 1em;
+}
+.footer__songart {
+  object-fit: contain;
+  height: 50px;
+  width: 50px;
+}
+.footer__left__buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6em;
+}
+
+.footer__center > div {
+  flex: 1;
+  align-items: center;
+}
+.footer__music-controls {
+  display: flex;
+  justify-content: space-around;
+  gap: 1em;
+}
+.footer__progressbar {
+  display: flex;
+  gap: 1em;
+}
+
+/* right */
+.footer__right {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  min-width: 300px;
+  max-width: 300px;
+}
