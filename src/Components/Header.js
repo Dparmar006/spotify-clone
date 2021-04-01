@@ -4,7 +4,7 @@ import "./Header.css";
 import ArrowBackRounded from "@material-ui/icons/ArrowBackIosRounded";
 import PersonRounded from "@material-ui/icons/PersonRounded";
 
-import { MenuRounded } from "@material-ui/icons";
+import { ExitToApp, MenuRounded } from "@material-ui/icons";
 
 const Header = () => {
   return (
@@ -17,6 +17,8 @@ const Header = () => {
           </label> */}
 
           <button
+            id="menu-btn"
+            className="button"
             onClick={() => {
               const sidebar = document.getElementById("sidebar");
               if (sidebar.className == "sidebar") {

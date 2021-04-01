@@ -6,31 +6,52 @@ import Login from "./screens/Login";
 import { getAccessTokenFromUrl } from "./spotify";
 import SpotifyWebApi from "spotify-web-api-js";
 import Sidebar from "./Components/Sidebar";
+import { useDataLayerValue } from "./DataLayer";
 
 const spotifyApi = new SpotifyWebApi();
 
 function App() {
-  const [token, setToken] = useState(null);
-
+  const [{ user, token, playlists }, dispatch] = useDataLayerValue();
   useEffect(() => {
     const hash = getAccessTokenFromUrl();
     window.location.hash = "";
     const _token = hash.access_token;
 
     if (_token) {
-      setToken(_token);
       spotifyApi.setAccessToken(_token);
-
-      spotifyApi
-        .getMe()
-        .then((user) => console.log(user))
-        .catch((error) => console.log(error));
+      dispatch({
+        type: "SET_TOKEN",
+        token: _token,
+      });
     }
+    spotifyApi
+      .getMe()
+      .then((user) => {
+        dispatch({
+          type: "SET_USER",
+          user: user,
+        });
+      })
+      .catch((error) => console.log(error));
+
+    spotifyApi
+      .getUserPlaylists()
+      .then((playlists) => {
+        dispatch({
+          type: "SET_PLAYLISTS",
+          playlists: playlists,
+        });
+      })
+      .catch((error) => {
+        console.log("error in fetching playlists");
+      });
   }, []);
-  console.log(token);
+
+  console.log("token :", token, user);
+  console.table(playlists);
   return (
     <div className="app">
-      {token ? (
+      {user ? (
         <>
           <Header />
           <Sidebar />

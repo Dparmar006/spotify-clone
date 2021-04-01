@@ -18,9 +18,12 @@
 .header__left {
   z-index: 200;
 }
-.menu-btn {
+.button {
+  cursor: pointer;
 }
-
+.button svg {
+  font-size: 2rem;
+}
 #menu:checked ~ .sidebar {
   left: -200px;
 }

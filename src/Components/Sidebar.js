@@ -11,7 +11,7 @@ import "./Header.css";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar" id="sidebar">
+    <div className="sidebar sidebar-closed" id="sidebar">
       <div className="top">
         <div className="logo">
           {/* <img
@@ -30,15 +30,19 @@ const Sidebar = () => {
             <LibraryBooksOutlined /> Library
           </li>
         </ul>
-        <div className="nav-buttons">
-          <button className="nav-button">
+        <ul className="nav-buttons">
+          <li className="nav-link">
             <Add /> Create playlist
-          </button>
-          <button className="nav-button">
+          </li>
+          <li className="nav-link">
             <Favorite /> Liked songs
-          </button>
-        </div>
+          </li>
+        </ul>
       </div>
+      <br />
+      <p className="sidebar__title">PLAYLISTS</p>
+      <hr />
+      <ul className="playlists"></ul>
     </div>
   );
 };
