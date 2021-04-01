@@ -7,6 +7,7 @@ import { getAccessTokenFromUrl } from "./spotify";
 import SpotifyWebApi from "spotify-web-api-js";
 import Sidebar from "./Components/Sidebar";
 import { useDataLayerValue } from "./DataLayer";
+import Footer from "./Components/Footer";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -47,8 +48,8 @@ function App() {
       });
   }, []);
 
-  console.log("token :", token, user);
-  console.table(playlists);
+  // console.log("token :", token, user);
+  console.log(playlists);
   return (
     <div className="app">
       {user ? (
@@ -58,6 +59,7 @@ function App() {
           <Row />
           <Row />
           <Row />
+          <Footer />
         </>
       ) : (
         <Login />

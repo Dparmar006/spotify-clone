@@ -4,6 +4,7 @@ import "./RowCard.css";
 const RowCard = ({
   rowCardTitle = "Similarities 100",
   rowCardDescription = "By Dixit",
+  rowCardImgUrl = "./assets/images/tomato-face.png",
 }) => {
   return (
     <a href="/playlist" className="row__link">
@@ -11,7 +12,7 @@ const RowCard = ({
         <div className="rowcard__container">
           <img
             className="rowcard__image"
-            src="./assets/images/tomato-face.png"
+            src={rowCardImgUrl}
             alt="playlisCover"
           />
           <div className="rowcard__info">

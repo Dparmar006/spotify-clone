@@ -51,3 +51,11 @@
   position: absolute;
   left: -200px;
 }
+
+.playlists {
+  list-style-type: none;
+  margin: 0.5em 0em;
+}
+.sidebar__playlist {
+  padding: 0.2em 0em;
+}

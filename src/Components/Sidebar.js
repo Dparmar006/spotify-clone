@@ -8,8 +8,10 @@ import {
 import React from "react";
 import "./Sidebar.css";
 import "./Header.css";
+import { useDataLayerValue } from "../DataLayer";
 
 const Sidebar = () => {
+  const [{ playlists }] = useDataLayerValue();
   return (
     <div className="sidebar sidebar-closed" id="sidebar">
       <div className="top">
@@ -42,7 +44,11 @@ const Sidebar = () => {
       <br />
       <p className="sidebar__title">PLAYLISTS</p>
       <hr />
-      <ul className="playlists"></ul>
+      <ul className="playlists">
+        {playlists?.items?.map((playlist) => (
+          <li className="sidebar__playlist">{playlist.name} </li>
+        ))}
+      </ul>
     </div>
   );
 };
