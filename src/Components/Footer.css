@@ -10,7 +10,7 @@
   padding: 0.6em;
 }
 .footer button svg {
-  font-size: 0.99rem;
+  font-size: 1.1rem;
 }
 
 .footer__left {
@@ -24,6 +24,13 @@
   object-fit: contain;
   height: 50px;
   width: 50px;
+}
+
+.footer__songname {
+  font-size: 0.9rem;
+}
+.footer__artistname {
+  font-size: 0.8rem;
 }
 .footer__left__buttons {
   display: flex;
@@ -39,6 +46,9 @@
   display: flex;
   justify-content: space-around;
   gap: 1em;
+}
+#play-button svg {
+  font-size: 3rem;
 }
 .footer__progressbar {
   display: flex;

@@ -49,6 +49,7 @@ function App() {
 
     spotifyApi.getMyCurrentPlayingTrack().then((track) => {
       dispatch({ type: "FETCH_CURRENT_TRACK", currentlyPlayingTrack: track });
+      console.log(track);
     });
   }, []);
 

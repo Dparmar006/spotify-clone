@@ -45,7 +45,9 @@ const Sidebar = () => {
 
       <ul className="playlists">
         {playlists?.items?.map((playlist) => (
-          <li className="sidebar__playlist" key={playlist.}>{playlist.name} </li>
+          <li className="sidebar__playlist" key={playlist.id}>
+            {playlist.name}{" "}
+          </li>
         ))}
       </ul>
     </div>

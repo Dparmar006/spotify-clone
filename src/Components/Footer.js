@@ -22,7 +22,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer__left">
         <img
-          src="https://mosaic.scdn.co/640/ab67616d0000b27303253a8ac4688460716f0474ab67616d0000b27350a744f0ef5c3e260d9de720ab67616d0000b2738d61a6d821636c7f855fb17eab67616d0000b273b25d5667f8f45b8b9c9ed1ef"
+          src={currentlyPlayingTrack?.item?.album?.images[0]?.url}
           alt="song-art"
           className="footer__songart"
         />
@@ -30,9 +30,9 @@ const Footer = () => {
           <p className="footer__songname">
             {currentlyPlayingTrack?.item?.name}
           </p>
-          {currentlyPlayingTrack?.item?.artists.map((artist) => {
-            <p className="footer__artistname">{artist.name}</p>;
-          })}
+          {currentlyPlayingTrack?.item?.artists.map((artist) => (
+            <p className="footer__artistname">{artist.name}</p>
+          ))}
         </div>
         <div className="footer__left__buttons">
           <button className="button">
@@ -52,7 +52,7 @@ const Footer = () => {
           <button className="button">
             <SkipPrevious />
           </button>
-          <button className="button">
+          <button className="button" id="play-button">
             <PlayCircleFilledOutlined fontSize="large" />
           </button>
           <button className="button">
@@ -62,11 +62,11 @@ const Footer = () => {
             <Repeat />
           </button>
         </div>
-        <div className="footer__progressbar">
+        {/* <div className="footer__progressbar">
           <p className="footer__songcurrenttime">2:42</p>
           <progress id="songprogress" max="100" value="40" />
           <p className="footer__songendtime">5:12</p>
-        </div>
+        </div> */}
       </div>
       <div className="footer__right">
         <button className="button">
