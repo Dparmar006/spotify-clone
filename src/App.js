@@ -8,6 +8,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 import Sidebar from "./Components/Sidebar";
 import { useDataLayerValue } from "./DataLayer";
 import Footer from "./Components/Footer";
+import CardGrid from "./Components/CardGrid";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -51,23 +52,38 @@ function App() {
       dispatch({ type: "FETCH_CURRENT_TRACK", currentlyPlayingTrack: track });
       console.log(track);
     });
+
+    spotifyApi
+      .getRecommendations()
+      .then((reccomendations) => console.log("recon :", reccomendations));
   }, []);
 
   // console.log("token :", token, user);
-  console.log(user, playlists);
+  // console.log(user, playlists);
   return (
     <div className="app">
       {user ? (
         <>
           <Header />
           <Sidebar />
+          <CardGrid />
           <Row />
           <Row />
 
           <Footer />
         </>
       ) : (
-        <Login />
+        <>
+          <Header />
+          <Sidebar />
+          <CardGrid />
+          <Row />
+          <Row />
+          <Row />
+          <Row />
+          <Footer />
+        </>
+        // <Login />
       )}
     </div>
   );

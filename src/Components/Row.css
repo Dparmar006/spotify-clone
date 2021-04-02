@@ -9,6 +9,7 @@
 .row__container {
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 .row__container::-webkit-scrollbar {
   display: none;

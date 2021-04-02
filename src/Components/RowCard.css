@@ -2,8 +2,6 @@
   display: contents;
   text-decoration: none;
 }
-.row__link:active {
-}
 
 .rowcard {
   background-color: var(--lightBlack);
@@ -12,6 +10,10 @@
   border-radius: 8px;
   padding: 1em;
   margin-right: 1.5em;
+  transition: ease-in-out 0.4s;
+}
+.rowcard:hover {
+  background-color: #2f2f2f;
 }
 
 .rowcard__container {
@@ -47,7 +49,7 @@
 @media screen and (min-width: 768px) {
   .rowcard {
     max-width: 22em;
-    min-width: 18%;
+    min-width: 20%;
     height: 18em;
   }
 }

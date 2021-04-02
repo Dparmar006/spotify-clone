@@ -36,7 +36,7 @@ const Header = () => {
           </button>
 
           <img
-            src="./assets/images/Spotify_Logo_RGB_Green.png"
+            src="./assets/images/Spotify_Logo_RGB_White.png"
             className="header__logo"
           />
         </div>

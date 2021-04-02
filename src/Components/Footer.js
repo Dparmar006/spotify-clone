@@ -22,17 +22,20 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer__left">
         <img
-          src={currentlyPlayingTrack?.item?.album?.images[0]?.url}
+          src={
+            currentlyPlayingTrack?.item?.album?.images[0]?.url ||
+            "./assets/images/tomato-face.png"
+          }
           alt="song-art"
           className="footer__songart"
         />
         <div className="footer__songinfo">
           <p className="footer__songname">
-            {currentlyPlayingTrack?.item?.name}
+            {currentlyPlayingTrack?.item?.name || "Dixit's Life"}
           </p>
           {currentlyPlayingTrack?.item?.artists.map((artist) => (
             <p className="footer__artistname">{artist.name}</p>
-          ))}
+          )) || "@pistanthrobian"}
         </div>
         <div className="footer__left__buttons">
           <button className="button">
