@@ -8,6 +8,7 @@ export const initialState = {
   playlists: [],
   isPlaying: false,
   item: null,
+  currentlyPlayingTrack: null,
 };
 
 const reducer = (state, action) => {
@@ -27,6 +28,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         playlists: action.playlists,
+      };
+    case "FETCH_CURRENT_TRACK":
+      return {
+        ...state,
+        currentlyPlayingTrack: action.currentlyPlayingTrack,
       };
     default:
       return state;

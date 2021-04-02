@@ -46,10 +46,14 @@ function App() {
       .catch((error) => {
         console.log("error in fetching playlists");
       });
+
+    spotifyApi.getMyCurrentPlayingTrack().then((track) => {
+      dispatch({ type: "FETCH_CURRENT_TRACK", currentlyPlayingTrack: track });
+    });
   }, []);
 
   // console.log("token :", token, user);
-  console.log(playlists);
+  console.log(user, playlists);
   return (
     <div className="app">
       {user ? (
@@ -58,7 +62,7 @@ function App() {
           <Sidebar />
           <Row />
           <Row />
-          <Row />
+
           <Footer />
         </>
       ) : (

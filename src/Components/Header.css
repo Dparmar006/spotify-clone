@@ -21,6 +21,11 @@
 .button {
   cursor: pointer;
 }
+.header__userinfo {
+  display: flex;
+  gap: 0.6em;
+  align-items: center;
+}
 .button svg {
   font-size: 2rem;
 }

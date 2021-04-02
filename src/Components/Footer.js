@@ -4,17 +4,20 @@ import {
   Favorite,
   Mic,
   PlayArrowRounded,
+  PlayCircleFilledOutlined,
   QueueMusic,
   RemoveFromQueue,
   Repeat,
   Shuffle,
   SkipNext,
   SkipPrevious,
-  Speaker,
+  VolumeDown,
 } from "@material-ui/icons";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDataLayerValue } from "../DataLayer";
 import "./Footer.css";
 const Footer = () => {
+  const [{ currentlyPlayingTrack }] = useDataLayerValue();
   return (
     <footer className="footer">
       <div className="footer__left">
@@ -24,8 +27,12 @@ const Footer = () => {
           className="footer__songart"
         />
         <div className="footer__songinfo">
-          <p className="footer__songname">Saudebazi</p>
-          <p className="footer__artistname">Javed Ali</p>
+          <p className="footer__songname">
+            {currentlyPlayingTrack?.item?.name}
+          </p>
+          {currentlyPlayingTrack?.item?.artists.map((artist) => {
+            <p className="footer__artistname">{artist.name}</p>;
+          })}
         </div>
         <div className="footer__left__buttons">
           <button className="button">
@@ -46,7 +53,7 @@ const Footer = () => {
             <SkipPrevious />
           </button>
           <button className="button">
-            <PlayArrowRounded />
+            <PlayCircleFilledOutlined fontSize="large" />
           </button>
           <button className="button">
             <SkipNext />
@@ -56,9 +63,9 @@ const Footer = () => {
           </button>
         </div>
         <div className="footer__progressbar">
-          <div className="footer__songcurrenttime">2:42</div>
+          <p className="footer__songcurrenttime">2:42</p>
           <progress id="songprogress" max="100" value="40" />
-          <div className="footer__songendtime">5:12</div>
+          <p className="footer__songendtime">5:12</p>
         </div>
       </div>
       <div className="footer__right">
@@ -72,7 +79,7 @@ const Footer = () => {
           <Devices />
         </button>
         <button className="button">
-          <Speaker />
+          <VolumeDown />
         </button>
         <Slider />
       </div>

@@ -5,8 +5,11 @@ import ArrowBackRounded from "@material-ui/icons/ArrowBackIosRounded";
 import PersonRounded from "@material-ui/icons/PersonRounded";
 
 import { ExitToApp, MenuRounded } from "@material-ui/icons";
+import { Avatar } from "@material-ui/core";
+import { useDataLayerValue } from "../DataLayer";
 
 const Header = () => {
+  const [{ user }] = useDataLayerValue();
   return (
     <header className="header">
       <div className="header__container">
@@ -37,10 +40,10 @@ const Header = () => {
             className="header__logo"
           />
         </div>
-
-        <button className="button">
-          <PersonRounded />
-        </button>
+        <div className="header__userinfo">
+          <Avatar alt={user?.display_name} src={user?.images[0]?.url} />
+          <h4>{user?.display_name}</h4>
+        </div>
       </div>
     </header>
   );

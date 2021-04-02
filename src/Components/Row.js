@@ -3,7 +3,9 @@ import { useDataLayerValue } from "../DataLayer";
 
 import "./Row.css";
 import RowCard from "./RowCard";
-
+const shortenDescription = (str) => {
+  return str.length < 20 ? str : str.substr(0, 75) + " ...";
+};
 const Row = ({ rowTitle = "Your playlits" }) => {
   const [{ playlists }] = useDataLayerValue();
   return (
@@ -14,6 +16,7 @@ const Row = ({ rowTitle = "Your playlits" }) => {
           <RowCard
             rowCardTitle={playlist.name}
             rowCardImgUrl={playlist?.images[0]?.url}
+            rowCardDescription={shortenDescription(playlist?.description)}
           />
         ))}
       </div>
