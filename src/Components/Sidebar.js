@@ -33,20 +33,19 @@ const Sidebar = () => {
           </li>
         </ul>
         <ul className="nav-buttons">
-          <li className="nav-link">
+          <li className="nav-button">
             <Add /> Create playlist
           </li>
-          <li className="nav-link">
+          <li className="nav-button">
             <Favorite /> Liked songs
           </li>
         </ul>
       </div>
       <br />
-      <p className="sidebar__title">PLAYLISTS</p>
-      <hr />
+
       <ul className="playlists">
         {playlists?.items?.map((playlist) => (
-          <li className="sidebar__playlist">{playlist.name} </li>
+          <li className="sidebar__playlist" key={playlist.}>{playlist.name} </li>
         ))}
       </ul>
     </div>
