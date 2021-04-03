@@ -9,6 +9,7 @@ export const initialState = {
   isPlaying: false,
   item: null,
   currentlyPlayingTrack: null,
+  reccomedation: [],
 };
 
 const reducer = (state, action) => {
@@ -33,6 +34,14 @@ const reducer = (state, action) => {
       return {
         ...state,
         currentlyPlayingTrack: action.currentlyPlayingTrack,
+      };
+    case "SET_RECCOMENDATION":
+      console.log("====================================");
+      console.log(action.topFeed);
+      console.log("====================================");
+      return {
+        ...state,
+        reccomedation: action.topFeed,
       };
     default:
       return state;

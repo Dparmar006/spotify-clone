@@ -1,6 +1,9 @@
 import React from "react";
+import { useDataLayerValue } from "../DataLayer";
 import "./CardGrid.css";
 const CardGrid = () => {
+  const [{ reccomendation }] = useDataLayerValue();
+  console.log(reccomendation);
   return (
     <section className="stripcard-container">
       <h2 className="stripcard__title">Good morning</h2>

@@ -13,7 +13,29 @@ import CardGrid from "./Components/CardGrid";
 const spotifyApi = new SpotifyWebApi();
 
 function App() {
-  const [{ user, token, playlists }, dispatch] = useDataLayerValue();
+  const [{ user, reccomedation }, dispatch] = useDataLayerValue();
+  const setTopFeed = () => {
+    var topArtistsList = [];
+    var topTracksList = [];
+    spotifyApi.getMyTopArtists().then((topArtists) => {
+      topArtistsList = [
+        topArtists?.items[Math.floor(Math.random() * 20)],
+        topArtists?.items[Math.floor(Math.random() * 20)],
+        topArtists?.items[Math.floor(Math.random() * 20)],
+      ];
+    });
+    spotifyApi.getMyTopTracks().then((topTracks) => {
+      topTracksList = [
+        topTracks?.items[Math.floor(Math.random() * 20)],
+        topTracks?.items[Math.floor(Math.random() * 20)],
+        topTracks?.items[Math.floor(Math.random() * 20)],
+      ];
+    });
+    dispatch({
+      type: "SET_RECCOMENDATION",
+      topFeed: topTracksList.concat(topArtistsList),
+    });
+  };
   useEffect(() => {
     const hash = getAccessTokenFromUrl();
     window.location.hash = "";
@@ -52,14 +74,10 @@ function App() {
       dispatch({ type: "FETCH_CURRENT_TRACK", currentlyPlayingTrack: track });
       console.log(track);
     });
-
-    spotifyApi
-      .getRecommendations()
-      .then((reccomendations) => console.log("recon :", reccomendations));
   }, []);
 
   // console.log("token :", token, user);
-  // console.log(user, playlists);
+  console.log("recomendation :", reccomedation);
   return (
     <div className="app">
       {user ? (
@@ -73,17 +91,7 @@ function App() {
           <Footer />
         </>
       ) : (
-        <>
-          <Header />
-          <Sidebar />
-          <CardGrid />
-          <Row />
-          <Row />
-          <Row />
-          <Row />
-          <Footer />
-        </>
-        // <Login />
+        <Login />
       )}
     </div>
   );
