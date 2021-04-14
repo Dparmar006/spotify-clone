@@ -35,13 +35,10 @@ const reducer = (state, action) => {
         ...state,
         currentlyPlayingTrack: action.currentlyPlayingTrack,
       };
-    case "SET_RECCOMENDATION":
-      console.log("====================================");
-      console.log(action.topFeed);
-      console.log("====================================");
+    case "SET_TOP_TRACKS":
       return {
         ...state,
-        reccomedation: action.topFeed,
+        topTracks: action.topTracks,
       };
     default:
       return state;

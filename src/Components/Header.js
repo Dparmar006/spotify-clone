@@ -1,10 +1,8 @@
 import React from "react";
 import "./Sidebar.css";
 import "./Header.css";
-import ArrowBackRounded from "@material-ui/icons/ArrowBackIosRounded";
-import PersonRounded from "@material-ui/icons/PersonRounded";
 
-import { ExitToApp, MenuRounded } from "@material-ui/icons";
+import { MenuRounded } from "@material-ui/icons";
 import { Avatar } from "@material-ui/core";
 import { useDataLayerValue } from "../DataLayer";
 
@@ -38,6 +36,7 @@ const Header = () => {
           <img
             src="./assets/images/Spotify_Logo_RGB_White.png"
             className="header__logo"
+            alt="spotify"
           />
         </div>
         <div className="header__userinfo">

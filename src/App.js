@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Row from "./Components/Row";
@@ -13,29 +13,8 @@ import CardGrid from "./Components/CardGrid";
 const spotifyApi = new SpotifyWebApi();
 
 function App() {
-  const [{ user, reccomedation }, dispatch] = useDataLayerValue();
-  const setTopFeed = () => {
-    var topArtistsList = [];
-    var topTracksList = [];
-    spotifyApi.getMyTopArtists().then((topArtists) => {
-      topArtistsList = [
-        topArtists?.items[Math.floor(Math.random() * 20)],
-        topArtists?.items[Math.floor(Math.random() * 20)],
-        topArtists?.items[Math.floor(Math.random() * 20)],
-      ];
-    });
-    spotifyApi.getMyTopTracks().then((topTracks) => {
-      topTracksList = [
-        topTracks?.items[Math.floor(Math.random() * 20)],
-        topTracks?.items[Math.floor(Math.random() * 20)],
-        topTracks?.items[Math.floor(Math.random() * 20)],
-      ];
-    });
-    dispatch({
-      type: "SET_RECCOMENDATION",
-      topFeed: topTracksList.concat(topArtistsList),
-    });
-  };
+  const [{ user }, dispatch] = useDataLayerValue();
+
   useEffect(() => {
     const hash = getAccessTokenFromUrl();
     window.location.hash = "";
@@ -48,6 +27,7 @@ function App() {
         token: _token,
       });
     }
+
     spotifyApi
       .getMe()
       .then((user) => {
@@ -70,14 +50,14 @@ function App() {
         console.log("error in fetching playlists");
       });
 
-    spotifyApi.getMyCurrentPlayingTrack().then((track) => {
-      dispatch({ type: "FETCH_CURRENT_TRACK", currentlyPlayingTrack: track });
-      console.log(track);
+    spotifyApi.getMyTopTracks({ limit: 6 }).then((topTracks) => {
+      dispatch({
+        type: "SET_TOP_TRACKS",
+        topTracks: topTracks,
+      });
     });
-  }, []);
+  });
 
-  // console.log("token :", token, user);
-  console.log("recomendation :", reccomedation);
   return (
     <div className="app">
       {user ? (

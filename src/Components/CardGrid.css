@@ -36,9 +36,15 @@
   height: 70px;
   width: 70px;
   object-fit: contain;
+  border-radius: 4px;
 }
-.stripcard__name {
+.stripcard__info {
   flex: 1;
+}
+.stripcard__artist {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 0.1em;
 }
 @media screen and (max-width: 800px) {
   .stripcardgrid {

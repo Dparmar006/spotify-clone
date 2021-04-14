@@ -3,7 +3,7 @@ import {
   Devices,
   Favorite,
   Mic,
-  PlayArrowRounded,
+  PauseCircleFilledOutlined,
   PlayCircleFilledOutlined,
   QueueMusic,
   RemoveFromQueue,
@@ -13,17 +13,25 @@ import {
   SkipPrevious,
   VolumeDown,
 } from "@material-ui/icons";
-import React, { useEffect } from "react";
-import { useDataLayerValue } from "../DataLayer";
+import React, { useEffect, useState } from "react";
+import SpotifyWebApi from "spotify-web-api-js";
+
 import "./Footer.css";
+const spotifyApi = new SpotifyWebApi();
 const Footer = () => {
-  const [{ currentlyPlayingTrack }] = useDataLayerValue();
+  const [currentlyPlayingSong, setCurrentlyPlayingSong] = useState();
+  useEffect(() => {
+    spotifyApi.getMyCurrentPlayingTrack().then((track) => {
+      setCurrentlyPlayingSong(track);
+    });
+  });
+
   return (
     <footer className="footer">
       <div className="footer__left">
         <img
           src={
-            currentlyPlayingTrack?.item?.album?.images[0]?.url ||
+            currentlyPlayingSong?.item?.album?.images[0]?.url ||
             "./assets/images/tomato-face.png"
           }
           alt="song-art"
@@ -31,11 +39,11 @@ const Footer = () => {
         />
         <div className="footer__songinfo">
           <p className="footer__songname">
-            {currentlyPlayingTrack?.item?.name || "Dixit's Life"}
+            {currentlyPlayingSong?.item?.name || "Play a song"}
           </p>
-          {currentlyPlayingTrack?.item?.artists.map((artist) => (
+          {currentlyPlayingSong?.item?.artists.map((artist) => (
             <p className="footer__artistname">{artist.name}</p>
-          )) || "@pistanthrobian"}
+          )) || "in your phone"}
         </div>
         <div className="footer__left__buttons">
           <button className="button">
@@ -53,10 +61,18 @@ const Footer = () => {
           </button>
 
           <button className="button">
-            <SkipPrevious />
+            <SkipPrevious
+              onClick={() => {
+                spotifyApi.skipToNext().then((value) => console.log(value));
+              }}
+            />
           </button>
           <button className="button" id="play-button">
-            <PlayCircleFilledOutlined fontSize="large" />
+            {currentlyPlayingSong?.is_playing ? (
+              <PauseCircleFilledOutlined />
+            ) : (
+              <PlayCircleFilledOutlined fontSize="large" />
+            )}
           </button>
           <button className="button">
             <SkipNext />
@@ -67,8 +83,15 @@ const Footer = () => {
         </div>
         {/* <div className="footer__progressbar">
           <p className="footer__songcurrenttime">2:42</p>
-          <progress id="songprogress" max="100" value="40" />
-          <p className="footer__songendtime">5:12</p>
+          <progress
+            id="songprogress"
+            max={Math.floor(currentlyPlayingSong?.timestamp / 10000000)}
+            value={Math.floor(currentlyPlayingSong?.progress_ms / 10000)}
+          />
+          <p className="footer__songendtime">
+            {Math.floor((currentlyPlayingSong?.timestamp / 1000) % 60)}
+            {Math.floor((currentlyPlayingSong?.timestamp / 1000 / 60) % 60)}
+          </p>
         </div> */}
       </div>
       <div className="footer__right">
