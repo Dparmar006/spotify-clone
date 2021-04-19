@@ -13,8 +13,10 @@ import CardGrid from "./Components/CardGrid";
 const spotifyApi = new SpotifyWebApi();
 
 function App() {
-  const [{ user }, dispatch] = useDataLayerValue();
-
+  const [
+    { user, playlists, topArtists, topArtistsAlbums, token },
+    dispatch,
+  ] = useDataLayerValue();
   useEffect(() => {
     const hash = getAccessTokenFromUrl();
     window.location.hash = "";
@@ -36,8 +38,7 @@ function App() {
           user: user,
         });
       })
-      .catch((error) => console.log(error));
-
+      .catch((error) => console.log("error in getting user"));
     spotifyApi
       .getUserPlaylists()
       .then((playlists) => {
@@ -56,7 +57,41 @@ function App() {
         topTracks: topTracks,
       });
     });
-  });
+
+    spotifyApi.getMyTopArtists().then((topArtists) => {
+      dispatch({
+        type: "SET_TOP_ARTISTS",
+        topArtists: topArtists,
+      });
+    });
+
+    // spotifyApi
+    //   .getArtistAlbums(topArtists?.items[Math.floor(Math.random() * 20)]?.id)
+    //   .then((topArtistsAlbums) => {
+    //     console.log(topArtistsAlbums);
+    //     dispatch({
+    //       type: "SET_TOP_ARTISTS_ALBUMS",
+    //       topArtistsAlbums: topArtistsAlbums,
+    //     });
+    //   });
+
+    spotifyApi.getArtistAlbums(
+      spotifyApi
+        .getMyTopArtists()
+        .then((topArtists) => {
+          return topArtists.items.map((artist) => {
+            return artist.id;
+          });
+        })
+        .then((topArtistsAlbums) => {
+          console.log(topArtistsAlbums);
+          dispatch({
+            type: "SET_TOP_ARTISTS_ALBUMS",
+            topArtistsAlbums: topArtistsAlbums,
+          });
+        })
+    );
+  }, []);
 
   return (
     <div className="app">
@@ -65,9 +100,9 @@ function App() {
           <Header />
           <Sidebar />
           <CardGrid />
-          <Row />
-          <Row />
-
+          <Row array={playlists} />
+          <Row array={topArtistsAlbums} />
+          <Row array={topArtists} rowTitle="You like them all" />
           <Footer />
         </>
       ) : (

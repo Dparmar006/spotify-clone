@@ -1,15 +1,13 @@
 export const initialState = {
-  // user:
-  //   "BQDb_5kXgNXdGOeXEEKmOVwHEW428s6x89vBuVDxSsc3rSroGn06aA-xl387HfYiqCN10EeqqCIWKen6HMwuCLMGWRUYKmbJmsrfPHipS6XDa6oLp9xx68SrjdLNl4uNU8tTJyCt1aKQnICyMPIWBiVfxjqHguv1aX-nvMSUZCe9NWbOshpg",
   user: null,
-  // TODO: remove it
-
   token: null,
   playlists: [],
   isPlaying: false,
   item: null,
   currentlyPlayingTrack: null,
   reccomedation: [],
+  topArtists: null,
+  topArtistsAlbums : null,
 };
 
 const reducer = (state, action) => {
@@ -39,6 +37,16 @@ const reducer = (state, action) => {
       return {
         ...state,
         topTracks: action.topTracks,
+      };
+    case "SET_TOP_ARTISTS":
+      return {
+        ...state,
+        topArtists: action.topArtists,
+      };
+    case "SET_TOP_ARTISTS_ALBUMS":
+      return {
+        ...state,
+        topArtistsAlbums: action.topArtistsAlbums,
       };
     default:
       return state;

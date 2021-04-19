@@ -3,7 +3,7 @@ import React from "react";
 import "./RowCard.css";
 const RowCard = ({
   rowCardTitle = "Similarities 100",
-  rowCardDescription = "By Dixit",
+  rowCardDescription = "",
   rowCardImgUrl = "./assets/images/tomato-face.png",
 }) => {
   return (

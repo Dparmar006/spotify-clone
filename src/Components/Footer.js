@@ -20,9 +20,11 @@ import "./Footer.css";
 const spotifyApi = new SpotifyWebApi();
 const Footer = () => {
   const [currentlyPlayingSong, setCurrentlyPlayingSong] = useState();
+
   useEffect(() => {
     spotifyApi.getMyCurrentPlayingTrack().then((track) => {
       setCurrentlyPlayingSong(track);
+      // console.log(track);
     });
   });
 
