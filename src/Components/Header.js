@@ -22,7 +22,7 @@ const Header = () => {
             className="button"
             onClick={() => {
               const sidebar = document.getElementById("sidebar");
-              if (sidebar.className == "sidebar") {
+              if (sidebar.className === "sidebar") {
                 sidebar.classList.add("sidebar-closed");
               } else {
                 sidebar.classList.remove("sidebar-closed");

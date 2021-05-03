@@ -63,11 +63,7 @@ const Footer = () => {
           </button>
 
           <button className="button">
-            <SkipPrevious
-              onClick={() => {
-                spotifyApi.skipToNext().then((value) => console.log(value));
-              }}
-            />
+            <SkipPrevious />
           </button>
           <button className="button" id="play-button">
             {currentlyPlayingSong?.is_playing ? (
@@ -87,14 +83,24 @@ const Footer = () => {
           <p className="footer__songcurrenttime">2:42</p>
           <progress
             id="songprogress"
-            max={Math.floor(currentlyPlayingSong?.timestamp / 10000000)}
-            value={Math.floor(currentlyPlayingSong?.progress_ms / 10000)}
+            max={1000000}
+            value={
+              (currentlyPlayingSong?.progress_ms *
+                currentlyPlayingSong?.timestamp) /
+              100
+            }
           />
           <p className="footer__songendtime">
             {Math.floor((currentlyPlayingSong?.timestamp / 1000) % 60)}
             {Math.floor((currentlyPlayingSong?.timestamp / 1000 / 60) % 60)}
           </p>
         </div> */}
+
+        {/* <LinearProgress
+          variant="determinate"
+          value={currentlyPlayingSong?.progress_ms / 1000}
+          
+        /> */}
       </div>
       <div className="footer__right">
         <button className="button">

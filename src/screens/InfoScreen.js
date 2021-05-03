@@ -3,7 +3,19 @@ import React from "react";
 import "./InfoScreen.css";
 import Header from "../Components/Header";
 import theme from "../theme";
+import { useParams } from "react-router-dom";
+import SpotifyWebApi from "spotify-web-api-js";
+import { useDataLayerValue } from "../DataLayer";
+const spotifyApi = new SpotifyWebApi();
 const InfoScreen = () => {
+  const { id } = useParams();
+  const { token } = useDataLayerValue();
+  spotifyApi.setAccessToken(token);
+  console.log(token);
+  spotifyApi
+    .getPlaylist(id)
+    .then((playlist) => console.log(playlist, "INFO SCREEN"))
+    .catch((err) => console.log(err));
   return (
     <section className="infoscreenpage">
       <Header />

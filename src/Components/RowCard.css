@@ -11,6 +11,7 @@
   padding: 1em;
   margin-right: 1.5em;
   transition: ease-in-out 0.4s;
+  cursor: pointer;
 }
 .rowcard:hover {
   background-color: #2f2f2f;

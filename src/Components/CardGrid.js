@@ -5,7 +5,9 @@ const CardGrid = () => {
   const [{ topTracks }] = useDataLayerValue();
   return (
     <section className="stripcard-container">
-      <h2 className="stripcard__title">Good morning, Your best picks</h2>
+      <h2 className="stripcard__title">
+        You just obbsessed with these, aren't you ?
+      </h2>
       <div className="stripcardgrid">
         {topTracks?.items?.map((track) => (
           <div className="stripcard">

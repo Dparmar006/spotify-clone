@@ -14,7 +14,7 @@ const spotifyApi = new SpotifyWebApi();
 
 function App() {
   const [
-    { user, playlists, topArtists, topArtistsAlbums, token },
+    { user, playlists, topArtists, topArtistsAlbums },
     dispatch,
   ] = useDataLayerValue();
   useEffect(() => {
@@ -84,7 +84,6 @@ function App() {
           });
         })
         .then((topArtistsAlbums) => {
-          console.log(topArtistsAlbums);
           dispatch({
             type: "SET_TOP_ARTISTS_ALBUMS",
             topArtistsAlbums: topArtistsAlbums,
@@ -100,8 +99,10 @@ function App() {
           <Header />
           <Sidebar />
           <CardGrid />
-          <Row array={playlists} />
-          <Row array={topArtistsAlbums} />
+          <Row
+            array={playlists}
+            rowTitle="Nice playlists yar, Can you share ?"
+          />
           <Row array={topArtists} rowTitle="You like them all" />
           <Footer />
         </>
